@@ -43,25 +43,26 @@ const handleClick = function(event) {
 
 function checkWinner (player) {
     // Check if player has all values of each combination
+    let win = false
     winningCombinations.forEach (each => {
         let matches = 0
+        
         for (let i = 0; i < each.length; i++) {
         // cells.forEach (x => {
             if (player.includes(each[i])) {
                 matches++
             }
             else break // go to the next combination
-            console.log(matches)
             if (matches === each.length) {
-                console.log('here')
-                return true
+                win = true
             }
         // })
         }
     // if we made it through each combo without returning true,
     // then there were no matches and player did not win
-    return false
     })
+    if (win) return true
+    return false
 }
 
 function checkDraw() {
